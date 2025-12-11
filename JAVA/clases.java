@@ -10,32 +10,32 @@ class Coche {
     private int velocidad;
 
     // Constructor COMPLETAR
-    public Coche(String marca, String modelo){
+    public Coche(String marca, String modelo, int velocidad){
         this.marca = marca;
         this.modelo = modelo;
         this.velocidad = velocidad;
     }
     
-    public void getMarca(){
+    public String getMarca(){
         return marca;
     }
-    public String setMarca(){
+    public void setMarca(String marca){
         this.marca = marca;
     }
 
-    public void getModelo(){
+    public String getModelo(){
         return modelo;
     }
-    public String setModelo(){
-        this.marca = marca;
+    public void setModelo(String modelo){
+        this.modelo = modelo;
     }
 
 
-    public void getVelocidad(){
+    public Int getVelocidad(){
         return velocidad;
     }
-    public String setVelocidad(){
-        this.marca = velocidad;
+    public void setVelocidad(Int velocidad){
+        this.velocidad = velocidad;
     }
 
     
@@ -84,17 +84,15 @@ class Alumno {
         this.ArrayList<Integer> = new ArrayList<Integer>;
     }
    
-    public void getNombre(){
+    public String getNombre(){
         return nombre;
     }
-    public String setNombre(){
-        this.marca = nombre;
+    public void setNombre(String nombre){
+        this.nombre = nombre;
     }
     // Método añadirNota COMPLETAR
-   public void añadirNota(){
-    System.out.println("Escribe la nota que quieres añadir: ");
-    int nota = sc.nextInt();
-    sc.nextLine();
+   public void añadirNota(int nota){
+    
     notas.add(nota);
    }
 
@@ -136,43 +134,49 @@ class CuentaBancaria {
 
 
     // constructor COMPLETAR
-    public CuentaBancaria(){
+    public CuentaBancaria(String titular, int saldo){
         this.titular = titular;
         this.saldo = saldo;
     }
 
-    public void getTitular(){
+    public String getTitular(){
         return titular;
     }
-    public String setTitular(){
+    public void setTitular(String titular){
         this.titular = titular;
     }
 
-    public void getSaldo(){
+    public Int getSaldo(){
         return saldo;
     }
-    public String setSaldo(){
+    public void setSaldo(Int saldo){
         this.saldo = saldo;
     }
 
     // método ingresar COMPLETAR
-   public void ingresar(){
-    System.out.println("Introduce la cantidad que quieres añadir: ");
-    int saldo_ingresar = sc.nextInt();
+   public void ingresar(saldo_ingresar){
+    
     if(saldo_ingresar > 0){
         System.out.ln(setSaldo(getSaldo()+saldo_ingresar));
-    }else{
-        System.out.println("Tienes que introducir valores positivos y enteros mayores que 0");
     }
-    sc.nextLine();
    }
 
     // método retirar COMPLETAR
    public void retirar(){
     System.out.println("Tienes " + getSaldo + " ¿Cuanto dinero quieres retirar? ");
+    int saldo_retirar = sc.nextInt();
+    nextLine();
+    if(saldo_retirar > getSaldo()){
+        setSaldo(getSaldo()-saldo_retirar);
+    }else{
+        System.out.println("No puedes retirar más dinero del que tienes");
+    }
    }
 
     // método mostrarSaldo COMPLETAR
+    public void mostrarSaldo(){
+        System.out.println("Tu saldo es de: " + getSaldo);
+    }
     
 }
 
@@ -187,32 +191,79 @@ class CuentaBancaria {
 
 
 class Libro {
-
     // atributos COMPLETAR
-    
+
+    private String titulo;
+    private String autor;
+    private boolean disponible = True;
     
     // constructor COMPLETAR
-   
+   public Libro(String titulo, String autor){
+    this.titulo = titulo;
+    this.autor = autor;
+    this.disponible = disponible;
+   }
+
+    public String getTitulo(){
+        return titulo;
+    }
+    public void setTitulo(String titulo){
+        this.titulo = titulo;
+    }
+    public void setDisponible(boolean disponible){
+        this.disponible = disponible;
+    }
 
     // método mostrarInfo COMPLETAR
-    
+    public void mostrarInfoLibro(){
+        System.out.println("Título: "+titulo+"\nAutor: "+autor+"\nDisponible: "+disponible);
+    }
 }
 
 
 
 class Biblioteca {
+    private ArrayList<Libro> libros;
+    private ArrayList<Libro> libros_prestados;
 
     // lista de libros COMPLETAR
     
 
     // añadirLibro COMPLETAR
-    
+    public void añadirLibro(Libro libro){
+        libros.add(libro);
+
+    }
 
     // prestarLibro COMPLETAR
+    public void prestarLibro(String titulo_prestar){
+        for(Libro libro: libros){
+            if(libro.getTitulo() == titulo_prestar){
+                libro.setDisponible(False)
+                libros_prestados.add(libro);
+                libro.mostrarInfoLibro();
+            }
+        }
     
 
+    }
+
     // devolverLibro COMPLETAR
-    
+    public void devolverLibro(){
+        System.out.println("Escribe el titulo del libro que quieres devolver: ");
+        String titulo_prestar = sc.nextLine();
+        for(Libro libro: libros_prestados){
+            if(libro.getTitulo == titulo_prestar){
+                setDisponible(True)
+                libros.add(libro);
+                libro.mostrarInfoLibro();
+            }
+        }
+        
+
+    }
+
+
 }
 
 
@@ -225,11 +276,18 @@ class Biblioteca {
 
 class Producto {
 
+private String nombre;
+private Int precio;
     // atributos COMPLETAR
    
-
+public Int getPrecio(){
+        return precio;
+    }
     // constructor COMPLETAR
-    
+    public Producto(String nombre, Int precio){
+        this.nombre = nombre;
+        this.precio = precio;
+    }
 
     // getters opcionales COMPLETAR
     
@@ -240,13 +298,24 @@ class Producto {
 class Carrito {
 
     // lista de productos COMPLETAR
-    
+    private ArrayList<Producto> productos = new ArrayList<Producto>;
 
     // añadirProducto COMPLETAR
-    
+   public void añadirProducto(Producto producto){
+    productos.add(producto)
+   } 
 
     // calcularTotal COMPLETAR
+    public void calcularTotal(){
+        Int dinero_total = 0;
+        for(int producto : productos){
+            dinero_total = dinero_total + producto.getPrecio;
+        }
+        
+    System.out.println("Esta es el precio total: "+dinero_total);
     
+    
+   } 
 
 }
 
@@ -295,6 +364,11 @@ public class Main {
         //   - Retirar otra cantidad.
         //   - Intentar retirar más de lo disponible (debe impedirse).
         //   - Mostrar el saldo final.
+        CuentaBancaria cuentaBancaria = new CuentaBancaria(Marcos, 20);
+        cuentaBancaria.ingresar();
+        cuentaBancaria.retirar();
+        cuentaBancaria.mostrarSaldo();
+
 
         // EJERCICIO 4: Biblioteca y Libros
         // Enunciado:
@@ -303,12 +377,23 @@ public class Main {
         //   - Prestar un libro por título.
         //   - Devolver un libro.
         //   - Mostrar si realmente cambia su disponibilidad.
-  
+        biblioteca.añadirLibro();
+        biblioteca.añadirLibro();
+        biblioteca.prestarLibro();
+        biblioteca.devolverLibro();
+        
+
+
         // EJERCICIO 5: Producto y Carrito
         // Enunciado:
         //   - Crear 3 productos con nombre y precio.
         //   - Añadirlos al carrito.
         //   - Calcular el total del carrito.
+        Producto producto = new Producto(Leche, 20);
+        Producto producto = new Producto(Huevos, 8);
+        Producto producto = new Producto(Pan, 2);
+        carrito.añadirProducto();
+        carrito.calcularTotal();
 
     }
 }
