@@ -1,0 +1,51 @@
+package ejercicios_programacion;
+
+class CuentaBancaria {
+    // atributos COMPLETAR
+    private String titular;
+    private int saldo;
+
+
+    // constructor COMPLETAR
+    public CuentaBancaria(String titular, int saldo){
+        this.titular = titular;
+        this.saldo = saldo;
+    }
+
+    public String getTitular(){
+        return titular;
+    }
+    public void setTitular(String titular){
+        this.titular = titular;
+    }
+
+    public int getSaldo(){
+        return saldo;
+    }
+    public void setSaldo(int saldo){
+        this.saldo = saldo;
+    }
+
+    // método ingresar COMPLETAR
+    public void ingresar(int saldo_ingresar){
+
+        setSaldo(getSaldo()+saldo_ingresar);
+
+
+    }
+
+    // método retirar COMPLETAR
+    public void retirar(int saldo_retirar){
+        if(saldo_retirar < getSaldo()){
+            setSaldo(getSaldo()-saldo_retirar);
+        }else{
+            System.out.println("No puedes retirar más dinero del que tienes");
+        }
+    }
+
+    // método mostrarSaldo COMPLETAR
+    public void mostrarSaldo(){
+        System.out.println("Tu saldo es de: " + getSaldo());
+    }
+
+}
